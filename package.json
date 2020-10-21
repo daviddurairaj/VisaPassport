@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "@builderx/utils": "~0.1.7",
+    "base-64": "^1.0.0",
+    "expo": "^39.0.0",
+    "expo-font": "~8.3.0",
+    "http-proxy-middleware": "^1.0.6",
+    "https-agent": "^1.0.0",
+    "lodash": "~4.17.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
+    "react-native-gesture-handler": "~1.7.0",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-screens": "~2.10.1",
+    "react-native-svg": "12.1.0",
+    "react-native-web": "~0.13.7",
+    "react-native-web-maps": "^0.2.0",
+    "react-navigation": "4.0.10",
+    "react-navigation-drawer": "~2.3.3",
+    "react-navigation-stack": "~1.10.3"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-preset-expo": "^8.3.0"
+  },
+  "proxy": "https://sandbox.api.visa.com"
+}
