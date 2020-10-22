@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import Headercomponent from "../components/Headercomponent";
-import MapView from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import OurFooterComponent from "../components/OurFooterComponent";
 
 function Map(props) {
@@ -22,7 +22,7 @@ function Map(props) {
         </View>
       </View>
       <MapView
-        provider={MapView.PROVIDER_GOOGLE}
+        provider={PROVIDER_GOOGLE}
         initialRegion={{
           latitude: 37.78825,
           longitude: -122.4324,
