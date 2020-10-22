@@ -1,11 +1,23 @@
 import React, { Component } from "react";
-import { StyleSheet, View, TextInput, ScrollView, ActivityIndicator } from "react-native";
+import { StyleSheet, View, TextInput, ScrollView, ActivityIndicator, FlatList, Text, SafeAreaView, StatusBar } from "react-native";
 import Headercomponent from "../components/Headercomponent";
 import OurFooterComponent from "../components/OurFooterComponent";
 import MaterialIconTextbox2 from "../components/MaterialIconTextbox2";
 import CupertinoButtonWhiteTextColor3 from "../components/CupertinoButtonWhiteTextColor3";
+import Moment from 'moment';
 
-const API = "/hello"
+const API = "http://127.0.0.1:5000/api"
+
+const renderItem = ({ item }) => (
+  
+  <View style={styles.rect5}>
+    <TextInput
+        placeholder={Moment(item.transactionDateTime).format('MM/DD/YYYY') + "\t  $" + item.transactionAmount.amount + " \t" + item.merchantAddress.city + ", " + item.merchantAddress.region.Key + ", " + item.merchantAddress.countryCode.threeCharacterCountryCode}
+        placeholderTextColor="rgba(23,34,116,1)"
+        style={styles.textInput6}
+      ></TextInput>
+  </View>
+);
 
 export default class Card extends Component {
   constructor() {
@@ -19,17 +31,13 @@ export default class Card extends Component {
     this.fetchData();
   }
   async fetchData() {
-    const response = await fetch('http://127.0.0.1:5000/api');
+    const response = await fetch(API);
     const data = await response.json();
     this.setState({newsList: data});
   }
   render() {
     if(this.state.newsList.resource) {
       var transactions = this.state.newsList.resource.transactions
-      console.log(transactions[0].merchantAddress.city)
-      console.log(transactions[1].merchantAddress.city)
-      console.log(transactions[2].merchantAddress.city)
-      console.log(transactions[3].merchantAddress.city)
       return (
         <View style={styles.container}>
           <View style={styles.textInput2Row}>
@@ -107,13 +115,12 @@ export default class Card extends Component {
                   style={styles.textInput6}
                 ></TextInput>
               </View>
-              {/* <View style={styles.rect5}>
-                <TextInput
-                    placeholder={this.state.newsList.data[0].email}
-                    placeholderTextColor="rgba(23,34,116,1)"
-                    style={styles.textInput6}
-                  ></TextInput>
-              </View> */}
+              <SafeAreaView>
+                <FlatList
+                  data={transactions}
+                  renderItem={renderItem}
+                />
+              </SafeAreaView>
             </ScrollView>
           </View>
         </View>
