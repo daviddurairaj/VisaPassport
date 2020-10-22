@@ -5,6 +5,8 @@ import OurFooterComponent from "../components/OurFooterComponent";
 import MaterialIconTextbox2 from "../components/MaterialIconTextbox2";
 import CupertinoButtonWhiteTextColor3 from "../components/CupertinoButtonWhiteTextColor3";
 
+const API = "/hello"
+
 export default class Card extends Component {
   constructor() {
     super();
@@ -17,13 +19,17 @@ export default class Card extends Component {
     this.fetchData();
   }
   async fetchData() {
-    const response = await fetch("test");
+    const response = await fetch('http://127.0.0.1:5000/api');
     const data = await response.json();
     this.setState({newsList: data});
   }
   render() {
-    // this.state.newsList.data
-    if(true) {
+    if(this.state.newsList.resource) {
+      var transactions = this.state.newsList.resource.transactions
+      console.log(transactions[0].merchantAddress.city)
+      console.log(transactions[1].merchantAddress.city)
+      console.log(transactions[2].merchantAddress.city)
+      console.log(transactions[3].merchantAddress.city)
       return (
         <View style={styles.container}>
           <View style={styles.textInput2Row}>
