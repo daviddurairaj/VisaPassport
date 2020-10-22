@@ -12,7 +12,7 @@ const renderItem = ({ item }) => (
   
   <View style={styles.rect5}>
     <TextInput
-        placeholder={Moment(item.transactionDateTime).format('MM/DD/YYYY') + "\t  $" + item.transactionAmount.amount + " \t" + item.merchantAddress.city + ", " + item.merchantAddress.region.Key + ", " + item.merchantAddress.countryCode.threeCharacterCountryCode}
+        placeholder={Moment(item.transactionDateTime).format('MM/DD/YYYY') + "\t  " + (item.transactionAmount.amount).toLocaleString('en-US', {style: 'currency', currency:'USD'}) + "  \t" + item.merchantAddress.city + ", " + item.merchantAddress.region.Key + ", " + item.merchantAddress.countryCode.threeCharacterCountryCode}
         placeholderTextColor="rgba(23,34,116,1)"
         style={styles.textInput6}
       ></TextInput>
@@ -93,27 +93,7 @@ export default class Card extends Component {
                     ></TextInput>
                   </View>
                 </View>
-                <View style={styles.rect3}>
-                  <TextInput
-                    placeholder="10/01/2020     Purchase $12.14 in Nice, France"
-                    placeholderTextColor="rgba(23,34,116,1)"
-                    style={styles.textInput4}
-                  ></TextInput>
-                </View>
-              </View>
-              <View style={styles.rect4}>
-                <TextInput
-                  placeholder="10/04/2020     Purchase $17.38 in Madrid, Spain"
-                  placeholderTextColor="rgba(23,34,116,1)"
-                  style={styles.textInput5}
-                ></TextInput>
-              </View>
-              <View style={styles.rect5}>
-                <TextInput
-                  placeholder="10/06/2020     Purchase $19.97 in Rome, Italy"
-                  placeholderTextColor="rgba(23,34,116,1)"
-                  style={styles.textInput6}
-                ></TextInput>
+                
               </View>
               <SafeAreaView>
                 <FlatList
@@ -288,7 +268,7 @@ const styles = StyleSheet.create({
   },
   group3Stack: {
     width: 362,
-    height: 126,
+    height: 50,
     marginTop: 28,
     marginLeft: 6
   },
