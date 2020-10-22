@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, TextInput, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Svg, { Ellipse } from "react-native-svg";
 import MaterialIconTextbox from "../components/MaterialIconTextbox";
@@ -65,10 +65,10 @@ function Signup(props) {
           onPress={() => props.navigation.navigate("Login")}
           style={styles.button3}
         >
-          <Text
+          <CupertinoButtonWhiteTextColor
+            button="LOG IN"
             style={styles.cupertinoButtonWhiteTextColor}
-            
-          > Login </Text>
+          ></CupertinoButtonWhiteTextColor>
         </TouchableOpacity>
         <TextInput
           placeholder="ALREADY A MEMBER?"
